@@ -175,17 +175,17 @@ class TouchableHighlight extends React.Component<Props, State> {
       pressRectOffset: this.props.pressRetentionOffset,
       android_disableSound: this.props.touchSoundDisabled,
       onBlur: event => {
-        if (Platform.isTV) {
+        //if (Platform.isTV) {
           this._hideUnderlay();
-        }
+        //}
         if (this.props.onBlur != null) {
           this.props.onBlur(event);
         }
       },
       onFocus: event => {
-        if (Platform.isTV) {
+        //if (Platform.isTV) {
           this._showUnderlay();
-        }
+       // }
         if (this.props.onFocus != null) {
           this.props.onFocus(event);
         }
@@ -338,21 +338,21 @@ class TouchableHighlight extends React.Component<Props, State> {
 
   componentDidMount(): void {
     this._isMounted = true;
-    if (Platform.isTV) {
+    //if (Platform.isTV) {
       this._tvTouchable = new TVTouchable(this, {
         getDisabled: () => this.props.disabled === true,
         onBlur: event => {
-          if (Platform.isTV) {
+          //if (Platform.isTV) {
             this._hideUnderlay();
-          }
+         // }
           if (this.props.onBlur != null) {
             this.props.onBlur(event);
           }
         },
         onFocus: event => {
-          if (Platform.isTV) {
+         // if (Platform.isTV) {
             this._showUnderlay();
-          }
+         // }
           if (this.props.onFocus != null) {
             this.props.onFocus(event);
           }
@@ -363,7 +363,7 @@ class TouchableHighlight extends React.Component<Props, State> {
           }
         },
       });
-    }
+    //}
   }
 
   componentDidUpdate(prevProps: Props, prevState: State) {
@@ -375,11 +375,11 @@ class TouchableHighlight extends React.Component<Props, State> {
     if (this._hideTimeout != null) {
       clearTimeout(this._hideTimeout);
     }
-    if (Platform.isTV) {
+    //if (Platform.isTV) {
       if (this._tvTouchable != null) {
         this._tvTouchable.destroy();
       }
-    }
+   // }
     this.state.pressability.reset();
   }
 }

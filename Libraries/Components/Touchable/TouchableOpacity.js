@@ -154,17 +154,17 @@ class TouchableOpacity extends React.Component<Props, State> {
       minPressDuration: 0,
       pressRectOffset: this.props.pressRetentionOffset,
       onBlur: event => {
-        if (Platform.isTV) {
+        //if (Platform.isTV) {
           this._opacityInactive(250);
-        }
+        //}
         if (this.props.onBlur != null) {
           this.props.onBlur(event);
         }
       },
       onFocus: event => {
-        if (Platform.isTV) {
+        //if (Platform.isTV) {
           this._opacityActive(150);
-        }
+       // }
         if (this.props.onFocus != null) {
           this.props.onFocus(event);
         }
@@ -265,7 +265,7 @@ class TouchableOpacity extends React.Component<Props, State> {
   }
 
   componentDidMount(): void {
-    if (Platform.isTV) {
+    //if (Platform.isTV) {
       this._tvTouchable = new TVTouchable(this, {
         getDisabled: () => this.props.disabled === true,
         onBlur: event => {
@@ -286,7 +286,7 @@ class TouchableOpacity extends React.Component<Props, State> {
           }
         },
       });
-    }
+    //}
   }
 
   componentDidUpdate(prevProps: Props, prevState: State) {
@@ -297,11 +297,11 @@ class TouchableOpacity extends React.Component<Props, State> {
   }
 
   componentWillUnmount(): void {
-    if (Platform.isTV) {
+    //if (Platform.isTV) {
       if (this._tvTouchable != null) {
         this._tvTouchable.destroy();
       }
-    }
+    //}
     this.state.pressability.reset();
   }
 }
